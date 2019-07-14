@@ -35,4 +35,4 @@ docker run -p 6789:6789 --name servertcp -d maniekq/servertcp-esp32
 
 When everything is working well server simply log received message on 
 DEBUG log level.
-When 
+When message is not received as expected, you should see ERROR log message.
