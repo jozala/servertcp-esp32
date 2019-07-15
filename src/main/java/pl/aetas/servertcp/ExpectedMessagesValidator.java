@@ -40,6 +40,7 @@ class ExpectedMessagesValidator {
 				int newCurrentMessageIndex = expectedMessagesMatches.indexOf(matchingPattern.get());
 				LOG.info("Unexpected message matches another pattern. Moving currentMessageIndex to {}", newCurrentMessageIndex);
 				currentMessageIndex = newCurrentMessageIndex;
+				currentMessageIndex++;
 			} else {
 				LOG.error("Message does not match any of the specified patterns: '{}'", receivedMessage);
 			}
