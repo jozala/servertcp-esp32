@@ -29,12 +29,8 @@ class ExpectedMessagesValidator {
 
 		if (matches) {
 			currentMessageIndex++;
-			if (currentMessageIndex >= expectedMessagesMatches.size()) {
-				currentMessageIndex = 0;
-			}
 		} else {
 			LOG.error("Message '{}' does not match expected pattern '{}'", receivedMessage, expectedPattern.pattern());
-
 			Optional<Pattern> matchingPattern = expectedMessagesMatches.stream().filter(it -> it.matcher(receivedMessage).matches()).findFirst();
 			if(matchingPattern.isPresent()) {
 				int newCurrentMessageIndex = expectedMessagesMatches.indexOf(matchingPattern.get());
@@ -45,6 +41,9 @@ class ExpectedMessagesValidator {
 				LOG.error("Message does not match any of the specified patterns: '{}'", receivedMessage);
 			}
 
+		}
+		if (currentMessageIndex >= expectedMessagesMatches.size()) {
+			currentMessageIndex = 0;
 		}
 		return matches;
 	}
